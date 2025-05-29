@@ -12,9 +12,82 @@ This setup ensures consistent version control practices across team environments
 .
 ├── .github/                     # GitHub specific configurations and documentation
 │   └── copilot-instructions.md  # GitHub Copilot setup instructions
+├── mcp-config-used-amazonQ/     # MCP configuration examples
+│   ├── config.json             # PostgreSQL MCP server configuration
+│   └── mcp.json                # Multi-database MCP server configuration
 ├── .gitignore                   # Comprehensive VS-specific Git ignore rules
 └── prd.md                       # Product requirements documentation
 ```
+
+## MCP Configuration Examples
+
+The repository includes working examples of MCP server configurations that demonstrate integration with Oracle and PostgreSQL databases using Amazon Q CLI.
+
+### PostgreSQL Configuration (config.json)
+```json
+{
+  "mcpServers": {
+    "postgres": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "DATABASE_URI",
+        "crystaldba/postgres-mcp",
+        "--access-mode=unrestricted"
+      ],
+      "env": {
+        "DATABASE_URI": "postgresql://admin:root@localhost:5432/test_db"
+      }
+    }
+  }
+}
+```
+
+### Multi-Database Configuration (mcp.json)
+```json
+{
+  "mcpServers": {
+    "postgres": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "DATABASE_URI",
+        "crystaldba/postgres-mcp",
+        "--access-mode=unrestricted"
+      ],
+      "env": {
+        "DATABASE_URI": "postgresql://admin:root@localhost:5432/test_db"
+      }
+    },
+    "oracle": {
+      "command": "docker",
+      "args": [
+        "run", 
+        "-i", 
+        "--rm", 
+        "-e",
+        "ORACLE_USER=system",
+        "-e",
+        "ORACLE_PASSWORD=root",
+        "mochoa/mcp-oracle", 
+        "host.docker.internal:1521/XEPDB1"]
+    }
+  }
+}
+```
+
+These configurations demonstrate:
+- Docker-based deployment of MCP servers
+- Connection settings for PostgreSQL and Oracle databases
+- Environment variable configuration for secure credential management
+- Unrestricted access mode for development environments
+- Docker networking setup for local database connections
 
 ## Usage Instructions
 
