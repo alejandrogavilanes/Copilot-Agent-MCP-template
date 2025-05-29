@@ -3,10 +3,10 @@
     "postgres": {
       "command": "docker",
       "args": [
-        "run", 
-        "-i",  
+        "run",
+        "-i",
         "--rm",
-        "-e",  
+        "-e",
         "DATABASE_URI",
         "crystaldba/postgres-mcp",
         "--access-mode=unrestricted"
@@ -14,6 +14,19 @@
       "env": {
         "DATABASE_URI": "postgresql://admin:root@localhost:5432/test_db"
       }
-    }  
-  }    
-}      
+    },
+    "oracle": {
+      "command": "docker",
+      "args": [
+        "run", 
+        "-i", 
+        "--rm", 
+        "-e",
+        "ORACLE_USER=system",
+        "-e",
+        "ORACLE_PASSWORD=root",
+        "mochoa/mcp-oracle", 
+        "host.docker.internal:1521/XEPDB1"]
+    }
+  }
+}
