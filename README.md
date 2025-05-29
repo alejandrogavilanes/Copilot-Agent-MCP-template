@@ -89,6 +89,10 @@ These configurations demonstrate:
 - Unrestricted access mode for development environments
 - Docker networking setup for local database connections
 
+Note: For global Amazon Q integration, copy the mcp.json file to ~/.aws/amazonq/ directory. While both config.json and 
+mcp.json are provided in this template, only mcp.json is required in the global Amazon Q configuration directory for 
+MCP setup.
+
 ## Usage Instructions
 
 ### Prerequisites
