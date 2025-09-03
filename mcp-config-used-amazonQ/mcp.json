@@ -27,6 +27,21 @@
         "ORACLE_PASSWORD=root",
         "mochoa/mcp-oracle", 
         "host.docker.internal:1521/XEPDB1"]
+    },
+    "awslabs.ccapi-mcp-server": {
+      "command": "uvx",
+      "args": [
+        "awslabs.ccapi-mcp-server@latest",
+        "--readonly"
+      ],
+      "env": {
+        "AWS_PROFILE": "your-aws-profile",
+        "DEFAULT_TAGS": "enabled",
+        "SECURITY_SCANNING": "enabled",
+        "FASTMCP_LOG_LEVEL": "ERROR"
+      },
+      "disabled": false,
+      "autoApprove": []
     }
   }
 }
