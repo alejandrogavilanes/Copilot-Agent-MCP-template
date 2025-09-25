@@ -42,6 +42,10 @@
       },
       "disabled": false,
       "autoApprove": []
+    },
+        "browsermcp": {
+      "command": "npx",
+      "args": ["@browsermcp/mcp@latest"]
     }
   }
 }
